@@ -1,25 +1,23 @@
-const BASE_URL = `https://api.coinpaprika.com/v1`;
+import axios from "axios";
 
-export function fetchCoins() {
-  return fetch(`${BASE_URL}/coins`).then((response) => response.json());
-}
+const BASE_URL = "https://api.coinpaprika.com/v1";
 
-export function fetchCoinInfo(coinId: string) {
-  return fetch(`${BASE_URL}/coins/${coinId}`).then((response) =>
-    response.json()
-  );
-}
+export const fetchCoins = async () => {
+  return await axios.get(`${BASE_URL}/coins`).then((res) => res.data);
+};
 
-export function fetchCoinTickers(coinId: string) {
-  return fetch(`${BASE_URL}/tickers/${coinId}`).then((response) =>
-    response.json()
-  );
-}
+export const fetchCoinInfo = async (coinId: string) => {
+  return await axios.get(`${BASE_URL}/coins/${coinId}`).then((res) => res.data);
+};
 
-export function fetchCoinHistory(coinId: string) {
-  const endDate = Math.floor(Date.now() / 1000);
-  const startDate = endDate - 60 * 60 * 23;
-  return fetch(
-    `${BASE_URL}/coins/${coinId}/ohlcv/historical?start=${startDate}&end=${endDate}`
-  ).then((response) => response.json());
-}
+export const fetchCoinTickers = async (coinId: string) => {
+  return await axios
+    .get(`${BASE_URL}/tickers/${coinId}`)
+    .then((res) => res.data);
+};
+
+export const fetchCoinHistory = async (coinId: string) => {
+  return await axios
+    .get(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`)
+    .then((res) => res.data);
+};
