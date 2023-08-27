@@ -47,13 +47,13 @@ export const CoinImg = styled.img`
 
 const CoinsItem = styled.li`
   list-style: none;
-  background-color: ${(props) => props.theme.textColor};
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   margin-bottom: 10px;
   padding: 20px;
   font-size: 18px;
   border-radius: 10px;
-  border: 1px soild black;
+  border: 1px solid ${(props) => props.theme.textColor};
   &:hover {
     ${CoinImg} {
       transform: scale(1.05) rotate(15deg);

@@ -1,5 +1,5 @@
 import { useParams, useLocation, Outlet, useMatch } from "react-router-dom";
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { StyledLink } from "./Coins";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
@@ -89,7 +89,7 @@ const TitleImg = styled.img`
 
 const ContentWrapper = styled.div`
   display: flex;
-  align-items: center;
+
   justify-content: space-evenly;
   margin-top: 5rem;
 `;
@@ -99,7 +99,7 @@ const OverViewBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+
   margin-right: 25px;
 `;
 
@@ -114,6 +114,7 @@ const OverView = styled.div`
   margin: 12px;
   text-align: center;
   border-radius: 20px;
+  border: 1px solid ${(props) => props.theme.textColor};
 `;
 
 const OverViewItem = styled.div`
@@ -140,13 +141,13 @@ const Description = styled.div`
   font-size: 20px;
   line-height: 1.5;
   border-radius: 4px;
+  border: 1px solid ${(props) => props.theme.textColor};
 `;
 
 const PriceAndChart = styled.div`
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   align-items: center;
 `;
 
@@ -156,6 +157,7 @@ const LinkBox = styled.div`
   justify-content: center;
   align-items: center;
   margin: 24px 0;
+  border-radius: 50%;
 `;
 
 const LinkTo = styled(StyledLink)<{ isActive: boolean }>`
@@ -169,6 +171,28 @@ const LinkTo = styled(StyledLink)<{ isActive: boolean }>`
   border-radius: 20px;
   padding: 12px 24px;
   margin: 4px;
+  &: hover {
+    border: 1px solid ${(props) => props.theme.textColor};
+  }
+`;
+
+const titleAnimation = keyframes`
+0% {
+  opacity: 0;
+}
+50% {
+  opacity: 1;
+  transform: scale(1.2);
+}
+100% {
+opacity: 0;
+
+}
+`;
+
+const LinkTitle = styled(StyledLink)`
+  margin-left: 10px;
+  animation: ${titleAnimation} 2s linear infinite;
 `;
 
 function Coin() {
@@ -193,6 +217,7 @@ function Coin() {
 
   const loading = infoLoading || tickersLoading;
 
+  const newLocal = "none";
   return (
     <CoinWrapper>
       <HelmetProvider>
@@ -204,34 +229,36 @@ function Coin() {
         <TitleImg
           src={`https://coinicons-api.vercel.app/api/icon/${infoData?.symbol.toLowerCase()}`}
         />
-        <Title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </Title>
+        <LinkTitle to="/BuyNow!!" style={{ textDecoration: "none" }}>
+          <Title>
+            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+          </Title>
+        </LinkTitle>
       </TitleContainer>
       <ContentWrapper>
         <OverViewBox>
           <OverView>
             <OverViewItem>
-              <span>Name : </span>
+              <span>Name: </span>
               <span>{tickersData?.name}</span>
             </OverViewItem>
             <OverViewItem>
-              <span>Symbol : </span>
+              <span>Symbol: </span>
               <span>{infoData?.symbol}</span>
             </OverViewItem>
             <OverViewItem>
-              <span>Rank : </span>
+              <span>Rank: </span>
               <span>{infoData?.rank}</span>
             </OverViewItem>
           </OverView>
           <Description>{infoData?.description}</Description>
           <OverView>
             <OverViewItem>
-              <span>Total Supply : </span>
+              <span>Total Supply: </span>
               <span>{tickersData?.total_supply}</span>
             </OverViewItem>
             <OverViewItem>
-              <span>Max Supply : </span>
+              <span>Max Supply: </span>
               <span>{tickersData?.max_supply}</span>
             </OverViewItem>
           </OverView>

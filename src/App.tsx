@@ -4,17 +4,21 @@ import Coins from "./Pages/Coins";
 import Coin from "./Pages/Coin";
 import Price from "./Pages/Price";
 import Chart from "./Pages/Chart";
+import BuyNow from "./Pages/BuyNow";
 import { ThemeProvider, keyframes, styled } from "styled-components";
 import { FaBackward, FaMoon, FaSun } from "react-icons/fa";
 import { useState } from "react";
 import { darkTheme, lightTheme } from "./theme";
 
 const backBtnAnimation = keyframes`
-    from {
+    0% {
         transform: translate(0);
     }
-    to {
+    50% {
         transform: translateX(-10px);
+    }    
+    100% {
+      transform: translate(0);
     }
 `;
 
@@ -30,7 +34,7 @@ const BackBtn = styled.button`
   color: ${(props) => props.theme.textColor};
   cursor: pointer;
   &:hover {
-    animation: ${backBtnAnimation} 700ms linear infinite;
+    animation: ${backBtnAnimation} 1s linear infinite;
   }
 `;
 
@@ -50,12 +54,12 @@ const ThemeBtn = styled.button`
   background: none;
   outline: none;
   border: none;
-  bottom: 24px;
-  left: 24px;
-  font-size: 48px;
+  bottom: 50px;
+  left: 50px;
+  font-size: 32px;
   cursor: pointer;
   &:hover {
-    animation: ${ThemeAnimation} 5s linear;
+    animation: ${ThemeAnimation} 5s linear infinite;
   }
 `;
 
@@ -83,6 +87,7 @@ function App() {
             <Route path="price" element={<Price />} />
             <Route path="chart" element={<Chart />} />
           </Route>
+          <Route path="BuyNow!!" element={<BuyNow />} />
         </Routes>
       </div>
     </ThemeProvider>

@@ -64,7 +64,7 @@ const CurrentPrice = styled.div`
   color: ${(props) => props.theme.accentColor};
   border-radius: 10px;
   padding: 12px 24px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 700;
   animation: ${priceAnimation} 1s linear;
@@ -93,6 +93,7 @@ const PercentItems = styled.div`
   &:hover {
     transform: scale(1.15);
   }
+  border: 1px solid black;
 `;
 
 function Price() {
@@ -136,7 +137,7 @@ function Price() {
         <PriceWrapper>
           <CurrentPrice>
             <h1>
-              Current Price : {priceData?.quotes.USD.price.toFixed(3) ?? 0} USD
+              Current Price: {priceData?.quotes.USD.price.toFixed(3) ?? 0} USD
             </h1>
           </CurrentPrice>
           <PercentChange>
@@ -149,7 +150,7 @@ function Price() {
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_1y)}
               </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_1y}%</span>
+              <span>1 Year: {priceData?.quotes.USD.percent_change_1y}%</span>
             </PercentItems>
             <PercentItems
               style={{
@@ -159,7 +160,7 @@ function Price() {
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_30d)}
               </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_30d}%</span>
+              <span>30 Days: {priceData?.quotes.USD.percent_change_30d}%</span>
             </PercentItems>
             <PercentItems
               style={{
@@ -169,7 +170,7 @@ function Price() {
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_7d)}
               </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_7d}%</span>
+              <span>7 Days: {priceData?.quotes.USD.percent_change_7d}%</span>
             </PercentItems>
             <PercentItems
               style={{
@@ -179,7 +180,7 @@ function Price() {
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_24h)}
               </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_24h}%</span>
+              <span>24 Hours: {priceData?.quotes.USD.percent_change_24h}%</span>
             </PercentItems>
             <PercentItems
               style={{
@@ -189,7 +190,7 @@ function Price() {
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_12h)}
               </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_12h}%</span>
+              <span>12 Hours: {priceData?.quotes.USD.percent_change_12h}%</span>
             </PercentItems>
             <PercentItems
               style={{
@@ -199,27 +200,7 @@ function Price() {
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_6h)}
               </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_6h}%</span>
-            </PercentItems>
-            <PercentItems
-              style={{
-                color: getPriceColor(priceData?.quotes.USD.percent_change_1h),
-              }}
-            >
-              <span>
-                {getPriceArrow(priceData?.quotes.USD.percent_change_1h)}
-              </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_1h}%</span>
-            </PercentItems>
-            <PercentItems
-              style={{
-                color: getPriceColor(priceData?.quotes.USD.percent_change_30m),
-              }}
-            >
-              <span>
-                {getPriceArrow(priceData?.quotes.USD.percent_change_30m)}
-              </span>
-              <span>1 Year : {priceData?.quotes.USD.percent_change_30m}%</span>
+              <span>6 Hours : {priceData?.quotes.USD.percent_change_6h}%</span>
             </PercentItems>
           </PercentChange>
         </PriceWrapper>
