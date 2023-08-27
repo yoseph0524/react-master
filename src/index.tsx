@@ -4,6 +4,7 @@ import "./CSS/index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { RecoilRoot } from "recoil";
 
 const queryClient = new QueryClient();
 
@@ -12,10 +13,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );

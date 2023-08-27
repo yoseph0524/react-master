@@ -16,8 +16,8 @@ function BuyNow() {
     <div>
       <H1>Buy Now!!</H1>
       <H1>
-        Click &nbsp; <Link to="https://www.coinbase.com/"> THIS</Link> &nbsp;to
-        Buy Now
+        Click &nbsp; <Link to="https://www.coinbase.com/">Here</Link>{" "}
+        &nbsp;&nbsp;to Buy Now
       </H1>
     </div>
   );
