@@ -82,8 +82,8 @@ function App() {
           {themeMode === "lightTheme" ? <FaMoon /> : <FaSun />}
         </ThemeBtn>
         <Routes>
-          <Route path="/" element={<Coins />} />
-          <Route path="/:coinId" element={<Coin />}>
+          <Route path="/react-master" element={<Coins />} />
+          <Route path="/react-master/:coinId" element={<Coin />}>
             <Route path="price" element={<Price />} />
             <Route path="chart" element={<Chart />} />
           </Route>
