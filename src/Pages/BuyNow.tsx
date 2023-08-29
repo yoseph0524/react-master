@@ -7,6 +7,7 @@ const H1 = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 60px;
+  font-weight: 700;
   color: ${(props) => props.theme.textColor};
   background-color: ${(props) => props.theme.bgColor};
 `;
@@ -14,10 +15,10 @@ const H1 = styled.div`
 function BuyNow() {
   return (
     <div>
-      <H1>Buy Now!!</H1>
+      <H1>Buy Now!! Now Is The Time!! </H1>
       <H1>
-        Click &nbsp; <Link to="https://www.coinbase.com/">Here</Link>{" "}
-        &nbsp;&nbsp;to Buy Now
+        Click&nbsp; <Link to="https://www.coinbase.com/"> Here</Link> &nbsp;to
+        Buy Now
       </H1>
     </div>
   );

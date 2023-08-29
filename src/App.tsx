@@ -9,8 +9,6 @@ import { ThemeProvider, keyframes, styled } from "styled-components";
 import { FaBackward, FaMoon, FaSun } from "react-icons/fa";
 import { useState } from "react";
 import { darkTheme, lightTheme } from "./theme";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isDarkAtom } from "./atoms";
 
 const backBtnAnimation = keyframes`
     0% {
@@ -68,21 +66,20 @@ const ThemeBtn = styled.button`
 function App() {
   const navigate = useNavigate();
 
-  const isDark = useRecoilValue(isDarkAtom);
-  const setterFn = useSetRecoilState(isDarkAtom);
+  const [themeMode, setThemeMode] = useState("lightTheme"); // 현재 테마 모드를 상태로 관리
 
   const toggleTheme = () => {
-    setterFn((prev) => !prev);
+    setThemeMode(themeMode === "lightTheme" ? "darkTheme" : "lightTheme"); // 테마 모드 토글
   };
 
   return (
-    <ThemeProvider theme={isDark ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode === "lightTheme" ? lightTheme : darkTheme}>
       <div className="App">
         <BackBtn onClick={() => navigate("")}>
           <FaBackward />
         </BackBtn>
         <ThemeBtn onClick={toggleTheme}>
-          {isDark ? <FaSun /> : <FaMoon />}
+          {themeMode === "lightTheme" ? <FaMoon /> : <FaSun />}
         </ThemeBtn>
         <Routes>
           <Route path="/" element={<Coins />} />

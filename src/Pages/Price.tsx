@@ -184,23 +184,23 @@ function Price() {
             </PercentItems>
             <PercentItems
               style={{
-                color: getPriceColor(priceData?.quotes.USD.percent_change_12h),
-              }}
-            >
-              <span>
-                {getPriceArrow(priceData?.quotes.USD.percent_change_12h)}
-              </span>
-              <span>12 Hours: {priceData?.quotes.USD.percent_change_12h}%</span>
-            </PercentItems>
-            <PercentItems
-              style={{
                 color: getPriceColor(priceData?.quotes.USD.percent_change_6h),
               }}
             >
               <span>
                 {getPriceArrow(priceData?.quotes.USD.percent_change_6h)}
               </span>
-              <span>6 Hours : {priceData?.quotes.USD.percent_change_6h}%</span>
+              <span>6 Hours: {priceData?.quotes.USD.percent_change_6h}%</span>
+            </PercentItems>
+            <PercentItems
+              style={{
+                color: getPriceColor(priceData?.quotes.USD.percent_change_1h),
+              }}
+            >
+              <span>
+                {getPriceArrow(priceData?.quotes.USD.percent_change_1h)}
+              </span>
+              <span>1 Hour: {priceData?.quotes.USD.percent_change_1h}%</span>
             </PercentItems>
           </PercentChange>
         </PriceWrapper>
